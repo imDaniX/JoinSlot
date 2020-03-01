@@ -1,0 +1,11 @@
+name: JoinSlot
+version: ${project.version}
+main: me.imdanix.slot.JoinSlot
+api-version: 1.13
+authors: [imDaniX]
+description: Just for setting slot on join
+commands:
+  joinslot:
+    usage: /joinslot [slot]
+    description: Reload config or set slot from command.
+    permission: joinslot.set
