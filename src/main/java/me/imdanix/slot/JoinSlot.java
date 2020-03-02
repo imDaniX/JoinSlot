@@ -47,6 +47,6 @@ public final class JoinSlot extends JavaPlugin implements Listener {
     }
 
     private void updateSlot(int newSlot) {
-        slot = Math.max(0, Math.min(8, newSlot)) - 1;
+        slot = Math.max(0, Math.min(8, newSlot - 1));
     }
 }
