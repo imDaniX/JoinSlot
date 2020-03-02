@@ -15,7 +15,7 @@ public final class JoinSlot extends JavaPlugin implements Listener {
     @Override
     public void onEnable() {
         saveDefaultConfig();
-        updateSlot(getConfig().getInt("default-slot", 1) - 1);
+        updateSlot(getConfig().getInt("default-slot", 1));
         Bukkit.getPluginManager().registerEvents(this, this);
     }
 
@@ -24,12 +24,12 @@ public final class JoinSlot extends JavaPlugin implements Listener {
         if(sender.hasPermission("joinslot.set")) {
             if(args.length < 1) {
                 reloadConfig();
-                updateSlot(getConfig().getInt("default-slot", 1) - 1);
-                sender.sendMessage(ChatColor.GREEN + "Default slot is now on " + (slot + 1));
+                updateSlot(getConfig().getInt("default-slot", 1));
+                sender.sendMessage(ChatColor.GREEN + "Default slot is now on " + (slot + 1) + "!");
             } else {
                 try {
                     updateSlot(Integer.valueOf(args[0]));
-                    getConfig().set("default-slot", (slot + 1));
+                    getConfig().set("default-slot", slot);
                     saveConfig();
                     sender.sendMessage(ChatColor.GREEN + "Default slot is now on " + (slot + 1) + "!");
                 } catch (NumberFormatException e) {
@@ -47,6 +47,6 @@ public final class JoinSlot extends JavaPlugin implements Listener {
     }
 
     private void updateSlot(int newSlot) {
-        slot = Math.max(0, Math.min(8, newSlot));
+        slot = Math.max(0, Math.min(8, newSlot)) - 1;
     }
 }
